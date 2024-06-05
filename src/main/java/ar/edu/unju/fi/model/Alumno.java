@@ -11,6 +11,7 @@ public class Alumno {
 	private LocalDate fecNac;
 	private String domicilio;
 	private Integer lu;
+	private Boolean status;
 	
 	public Alumno() {
 		
@@ -79,5 +80,11 @@ public class Alumno {
 		this.lu = lu;
 	}
 	
-	
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
 }

@@ -8,6 +8,7 @@ public class Materia {
 	private String modalidad;
 	private Docente docente;
 	private String carrera;
+	private Boolean status;
 	
 	public Materia() {
 		
@@ -66,5 +67,12 @@ public class Materia {
 		this.carrera = carrera;
 	}
 	
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
 	
 }

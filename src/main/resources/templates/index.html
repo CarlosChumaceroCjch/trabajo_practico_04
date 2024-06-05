@@ -9,15 +9,10 @@
 	</head>
 	<body>
 	<nav></nav>
-		<nav class="navbar bg-body-tertiary">
-		  <div class="container-fluid">
-			    <a class="navbar-brand" href="#">
-			      <img src="/images/Logo-unju.png" alt="Logo" width="150" height="35" class="d-inline-block align-text-top">
-			      Facultad de Ingenieria Unju
-			    </a>
-		  </div>
-		</nav>
-		<div data-th-replace="~{fragments/navbar :: navbar}"></div>
+		<!-- Header -->
+		<div data-th-replace="~{fragments/header :: navbar}"></div>
+		
+		<!-- Contenido principal -->
 		<div class="row">
 			<main class="col-9">
 				<div class="row">
@@ -116,7 +111,7 @@
 				
 			</aside>
 		</div>
-		<footer data-th-replace="~{fragments/navbar :: footer}">
+		<footer data-th-replace="~{fragments/footer :: footer}">
 		</footer> 
 		<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script> 
 	</body>
