@@ -3,50 +3,43 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 </head>
 	<body>
-		 <nav data-th-fragment="navbar" class="navbar navbar-expand-lg bg-body-tertiary">
-		  <div class="container-fluid">
-		    <a class="navbar-brand" href="#">Navbar</a>
-		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-		      <span class="navbar-toggler-icon"></span>
-		    </button>
-		    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-		      <div class="navbar-nav">
-		        <a class="nav-link active" aria-current="page" href="#">Home</a>
-		        <a class="nav-link" href="#">Features</a>
-		        <a class="nav-link" href="#">Pricing</a>
-		        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-		      </div>
-		    </div>
-		  </div>
-		</nav>		
+  	
+		<nav data-th-fragment="navbar" class="navbar navbar-expand-lg bg-body-tertiary">
+			  <div class="container-fluid">
+				    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				     	 <span class="navbar-toggler-icon"></span>
+				    </button>
+				    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					      <div class="navbar-nav">
+						        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+						        <a class="nav-link" href="#">Acerca de</a>
+						        <a class="nav-link" href="#">Carreras</a>
+						        <a class="nav-link" href="#">Noticias</a>
+						        <a class="nav-link" href="#">Contacto</a>
+					      </div>
+				    </div>
+			  </div>
+		</nav>
+		<div class="container" data-th-fragment="footer">
+		  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+		    <p class="col-md-4 mb-0 text-body-secondary">© 2024-Facultad de Ingenieria-UNJu</p>
 		
-		 <footer data-th-fragment="footer">
-	          <div class="container">
-	            <div class="row">
-	              <div class="col l6 s12">
-	                <h5 class="white-text">Footer Content</h5>
-	                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-	              </div>
-	              <div class="col l4 offset-l2 s12">
-	                <h5 class="white-text">Links</h5>
-	                <ul>
-	                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-	                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-	                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-	                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-	                </ul>
-	              </div>
-	            </div>
-	          </div>
-	          <div class="footer-copyright">
-	            <div class="container">
-	            © 2014 Copyright Text
-	            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-	            </div>
-	          </div>
-        </footer>
+		    <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+		      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+		    </a>
 		
+		    <ul class="nav col-md-4 justify-content-end">
+		      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Direccion:</a></li>
+		      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Tel:</a></li>
+		      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">E-mail:</a></li>
+		      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Unju F.I.</a></li>
+		      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Unju F.I.</a></li>
+		    </ul>
+		  </footer>
+		</div>
+	<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 	</body>
 </html>
