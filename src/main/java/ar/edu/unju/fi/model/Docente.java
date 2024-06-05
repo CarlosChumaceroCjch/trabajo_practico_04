@@ -6,6 +6,7 @@ public class Docente {
 	private String apellido;
 	private String email;
 	private Integer tel;
+	private Boolean status;
 	
 	public Docente () {
 		
@@ -59,5 +60,11 @@ public class Docente {
 		this.tel = tel;
 	}
 	
-	
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
 }
