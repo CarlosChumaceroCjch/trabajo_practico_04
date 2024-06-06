@@ -10,7 +10,16 @@ public class ListadoAlumnos {
 	
 	//Listar carreras
 		public static List<Alumno> listarAlumnos(){
-			return alumnos;
+			List<Alumno> alumnosVal = new ArrayList<Alumno>();
+			for (int i = 0; i < alumnos.size(); i++) {
+				Alumno alumno = alumnos.get(i);
+				if (alumno.getStatus() == true) {
+					alumnosVal.add(alumno);
+				}
+
+			}
+
+			return alumnosVal;
 		}
 		
 		//Metodo para buscar por ID
@@ -45,6 +54,12 @@ public class ListadoAlumnos {
 		
 		//Eliminar Carrera
 		public static void eliminarAlumno(Integer lu) {
-			alumnos.removeIf(alumno ->alumno.getLu()==lu);
+			for (int i = 0; i < alumnos.size(); i++) {
+				Alumno alumno = alumnos.get(i);
+				if (alumno.getLu().equals(lu)) {
+					alumno.setStatus(false);
+					break;
+				}
+			}
 		}
 }

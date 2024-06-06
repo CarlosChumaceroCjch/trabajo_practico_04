@@ -1,8 +1,10 @@
 package ar.edu.unju.fi.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -12,27 +14,44 @@ import ar.edu.unju.fi.model.Carrera;
 @Controller
 public class CarreraController {
 	
+	@Autowired
+	Carrera nuevaCarrera = new Carrera();
+	
 	@GetMapping("/formularioCarrera")
 	public ModelAndView getFormCarrera() {
-		//Vista
+		//Vista formCarrera.html
 		ModelAndView modelView= new ModelAndView("formCarrera");
-		//Objeto
-		modelView.addObject("nuevaCarrera",new Carrera());
+		//Agrega el Objeto
+		modelView.addObject("nuevaCarrera",nuevaCarrera);
 		
 		return modelView;
 		
 	}
 	@PostMapping("/guardarCarrera")
-	public ModelAndView saveCarrera(@ModelAttribute("nuevaCarrera") Carrera carrera) {
+	public ModelAndView saveCarrera(@ModelAttribute("nuevaCarrera") Carrera c) {
 
 		//Guardado de carrera
-		ListadoCarreras.agCarrera(carrera);
+		ListadoCarreras.agCarrera(c);
 		
 		//mostrar la vista
 		ModelAndView modelView= new ModelAndView("listaDeCarreras");
-		modelView.addObject("listaCarreras",ListadoCarreras.listarCarreras());
+		modelView.addObject("listadoCarreras",ListadoCarreras.listarCarreras());
 		
 		return modelView;
 		
 	}
+	
+	@GetMapping("/eliminarCarrera/{codigo}")
+	public ModelAndView eliminarCarreraDeLista(@PathVariable(name="codigo") String codigo) {
+		//Borrar
+		ListadoCarreras.eliminarCarrera(codigo);
+		
+		//Mostrar Nuevo Listadp
+		ModelAndView modelView = new ModelAndView("listaDeCarreras");
+		modelView.addObject("listadoCarreras",ListadoCarreras.listarCarreras());
+		
+		return modelView;
+	}
+	
+	
 }

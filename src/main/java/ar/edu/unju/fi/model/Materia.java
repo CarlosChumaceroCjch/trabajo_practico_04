@@ -1,5 +1,10 @@
 package ar.edu.unju.fi.model;
 
+import org.springframework.stereotype.Component;
+
+import ar.edu.unju.fi.collections.ListadoDocentes;
+
+@Component
 public class Materia {
 	private String cod;
 	private String nombre;
@@ -7,6 +12,7 @@ public class Materia {
 	private Integer cantHoras;
 	private String modalidad;
 	private Docente docente;
+		private Integer legDoc;
 	private String carrera;
 	private Boolean status;
 	
@@ -14,16 +20,27 @@ public class Materia {
 		
 	}
 	
-	public Materia(String cod, String nombre, String curso, Integer cantHoras, String modalidad, Docente docente,
+	public Materia(String cod, String nombre, String curso, Integer cantHoras, String modalidad, Integer legDoc,
 			String carrera) {
 		this.cod = cod;
 		this.nombre = nombre;
 		this.curso = curso;
 		this.cantHoras = cantHoras;
 		this.modalidad = modalidad;
-		this.docente = docente;
+		this.legDoc =legDoc;
 		this.carrera = carrera;
+	//Legajo para asignar al docente a cargo de la amteria a partir de su legajo
+	//Facilita el ignreso de datos en el formulario
 	}
+	public Integer getLegDoc() {
+		return legDoc;
+	}
+
+	public void setLegDoc(Integer legDoc) {
+		this.legDoc = legDoc;
+	}
+
+	
 	public String getCod() {
 		return cod;
 	}
@@ -57,8 +74,8 @@ public class Materia {
 	public Docente getDocente() {
 		return docente;
 	}
-	public void setDocente(Docente docente) {
-		this.docente = docente;
+	public void setDocente() {
+		this.docente =ListadoDocentes.buscarDocenteLeg(legDoc);
 	}
 	public String getCarrera() {
 		return carrera;
