@@ -2,12 +2,15 @@ package ar.edu.unju.fi.model;
 
 import java.time.LocalDate;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Alumno {
 	private Integer dni;
 	private String nombre;
 	private String apellido;
 	private String email;
-	private Integer tel;
+	private String tel;
 	private LocalDate fecNac;
 	private String domicilio;
 	private Integer lu;
@@ -17,7 +20,7 @@ public class Alumno {
 		
 	}
 	
-	public Alumno(Integer dni, String nombre, String apellido, String email, Integer tel, LocalDate fecNac,
+	public Alumno(Integer dni, String nombre, String apellido, String email, String tel, LocalDate fecNac,
 			String domicilio, Integer lu) {
 		this.dni = dni;
 		this.nombre = nombre;
@@ -55,10 +58,10 @@ public class Alumno {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Integer getTel() {
+	public String getTel() {
 		return tel;
 	}
-	public void setTel(Integer tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 	public LocalDate getFecNac() {
