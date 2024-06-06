@@ -8,6 +8,8 @@
 	</head>
 	
 	<body>
+	<!-- Header -->
+	<div data-th-replace="~{fragments/header :: navbar}"></div>
 	<div class="container">
 		<table class="table table-striped">
 			<thead>
@@ -34,7 +36,8 @@
 			</tbody>
 		</table>
 	</div>
-		
+	<footer data-th-replace="~{fragments/footer :: footer}">
+		</footer> 	
 		<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 	</body>
 </html>
