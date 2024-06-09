@@ -12,35 +12,23 @@ public class Materia {
 	private Integer cantHoras;
 	private String modalidad;
 	private Docente docente;
-		private Integer legDoc;
-	private String carrera;
+	private Carrera carrera;
 	private Boolean status;
 	
 	public Materia() {
 		
 	}
 	
-	public Materia(String cod, String nombre, String curso, Integer cantHoras, String modalidad, Integer legDoc,
-			String carrera) {
+	public Materia(String cod, String nombre, String curso, Integer cantHoras, String modalidad,
+			Carrera carrera) {
 		this.cod = cod;
 		this.nombre = nombre;
 		this.curso = curso;
 		this.cantHoras = cantHoras;
 		this.modalidad = modalidad;
-		this.legDoc =legDoc;
 		this.carrera = carrera;
-	//Legajo para asignar al docente a cargo de la amteria a partir de su legajo
-	//Facilita el ignreso de datos en el formulario
-	}
-	public Integer getLegDoc() {
-		return legDoc;
 	}
 
-	public void setLegDoc(Integer legDoc) {
-		this.legDoc = legDoc;
-	}
-
-	
 	public String getCod() {
 		return cod;
 	}
@@ -74,13 +62,13 @@ public class Materia {
 	public Docente getDocente() {
 		return docente;
 	}
-	public void setDocente() {
-		this.docente =ListadoDocentes.buscarDocenteLeg(legDoc);
+	public void setDocente(Docente docente) {
+		this.docente =docente;
 	}
-	public String getCarrera() {
+	public Carrera getCarrera() {
 		return carrera;
 	}
-	public void setCarrera(String carrera) {
+	public void setCarrera(Carrera carrera) {
 		this.carrera = carrera;
 	}
 	

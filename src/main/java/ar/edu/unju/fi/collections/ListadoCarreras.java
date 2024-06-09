@@ -45,6 +45,7 @@ public class ListadoCarreras {
 	// Modificar Carrera
 
 	public static void modificarCarrera(Carrera carMod) {
+		carMod.setStatus(true);
 		for (int i = 0; i < carreras.size(); i++) {
 			Carrera carrera = carreras.get(i);
 			if (carrera.getCodigo().equals(carMod.getCodigo())) {

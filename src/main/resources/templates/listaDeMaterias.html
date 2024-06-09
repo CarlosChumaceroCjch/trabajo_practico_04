@@ -17,9 +17,9 @@
 			      <th scope="col">Codigo</th>
 			      <th scope="col">Nombre</th>
 			      <th scope="col">Curso</th>
-			      <th scope="col">Cantidad de Horas</th>
+			      <th scope="col">Carga Horaria</th>
 			      <th scope="col">Modalidad</th>
-			      <th scope="col">Legajo Docente</th>
+			      <th scope="col">Docente</th>
 			      <th scope="col">Carrera</th>
 			      <th scope="col">Estado</th>
 			      <th scope="col"> Edicion</th>
@@ -32,8 +32,8 @@
 			      <td data-th-text="${materia.curso}"></td>
 			      <td data-th-text="${materia.cantHoras}"></td>
 			      <td data-th-text="${materia.modalidad}"></td>
-			      <td data-th-text="${materia.legDoc}"></td>
-			      <td data-th-text="${materia.carrera}"></td>
+			      <td data-th-text="${materia.docente.apellido}"></td>
+			      <td data-th-text="${materia.carrera.nombre}"></td>
 			      <td data-th-text="${materia.status}"></td>
 			      <td>
 			      	<a data-th-href="@{'/eliminarMateria/'+${materia.cod}}" class="btn btn-danger">Borrar</a>
