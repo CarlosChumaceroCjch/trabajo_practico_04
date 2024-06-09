@@ -23,7 +23,7 @@ public class CarreraController {
 		ModelAndView modelView= new ModelAndView("formCarrera");
 		//Agrega el Objeto
 		modelView.addObject("nuevaCarrera",nuevaCarrera);
-		
+		modelView.addObject("flag", false);
 		return modelView;
 		
 	}
@@ -53,5 +53,21 @@ public class CarreraController {
 		return modelView;
 	}
 	
+	@GetMapping("/modificarCarrera/{codigo}")
+	public ModelAndView modificarCarrera(@PathVariable(name="codigo")String codigo) {
+		Carrera carrera = ListadoCarreras.buscaCarreraCod(codigo);
+		ModelAndView modelView =new ModelAndView("formCarrera");
+		modelView.addObject("nuevaCarrera",carrera);
+		modelView.addObject("flag", true);		
+		return modelView;
+	}
 	
+	@PostMapping("/modificarCarrera")
+	public ModelAndView modifcarCarrera(@ModelAttribute("nuevaCarrera") Carrera cMod)
+	{	ListadoCarreras.modificarCarrera(cMod);
+		ModelAndView modelView = new ModelAndView("listaDeCarreras");
+		modelView.addObject("listadoCarreras",ListadoCarreras.listarCarreras());
+		return modelView;
+		
+	}
 }

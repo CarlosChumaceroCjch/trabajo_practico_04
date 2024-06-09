@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.fi.collections.ListadoCarreras;
+import ar.edu.unju.fi.collections.ListadoDocentes;
 import ar.edu.unju.fi.collections.ListadoMaterias;
 import ar.edu.unju.fi.model.Materia;
 
@@ -21,7 +23,8 @@ public class MateriaController {
 		ModelAndView modelView = new ModelAndView("formMateria");
 		
 		modelView.addObject("nuevaMateria",nuevaMateria);
-		
+		modelView.addObject("listadoDocentes",ListadoDocentes.listarDocentes());
+		modelView.addObject("listadoCarreras", ListadoCarreras.listarCarreras());
 		return modelView;
 	}
 	
@@ -29,8 +32,9 @@ public class MateriaController {
 	public ModelAndView saveMateria(@ModelAttribute("nuevaMateria") Materia m) {
 
 		//Guardado
+		m.setDocente(ListadoDocentes.buscarDocenteLeg(m.getDocente().getLegajo()));
+		m.setCarrera(ListadoCarreras.buscaCarreraCod(m.getCarrera().getCodigo()));
 		ListadoMaterias.agMateria(m);;
-		
 		//mostrar la vista (el Html)
 		ModelAndView modelView= new ModelAndView("listaDematerias");
 		modelView.addObject("listadoMaterias",ListadoMaterias.listadoMaterias());

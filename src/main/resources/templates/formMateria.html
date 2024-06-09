@@ -31,34 +31,38 @@
 					type="text" class="form-control" id="curso"
 					data-th-field="*{curso}">
 			</div>
-
+			
 			<div class="col-md-4">
-				<label class="form-label">Modalidad</label>
-				<div class="form-check">
-					<input class="form-check-input" type="checkbox" value="Virtual"
-						id="flexCheckDefault" data-th-field="*{modalidad}"> 
-						<label class="form-check-label"	for="flexCheckDefault"> 
-							Virtual 
-						</label>
-				</div>
-				<div class="form-check">
-					<input class="form-check-input" type="checkbox" value="Presencial" id="flexCheckChecked" checked data-th-field="*{modalidad}"> 
-					<label class="form-check-label" for="flexCheckChecked"> 
-						Presencial 
-					</label>
-				</div>
+				<label for="cantHoras" class="form-label">Carga Horaria</label> <input
+					type="number" class="form-control" id="cantHoras"
+					data-th-field="*{cantHoras}">
 			</div>
 			
 			<div class="col-md-4">
-				<label for="legDoc" class="form-label">Legajo Docente a Cargo</label> <input
-					type="number" class="form-control" id="legDoc"
-					data-th-field="*{legDoc}">
+				<label for="modalidad" class="form-label">Modalidad</label >
+				<select id="modalidad" class ="form-select" data-th-field="*{modalidad}" required>
+					<option value ="">Seleccione Modalidad</option>
+					<option value="Presencial">Presencial</option>
+					<option value="Virtual">Virtual</option>
+				</select>
 			</div>
 			
+			<!-- select para vincular listado docente con las opcion del select -->
 			<div class="col-md-4">
-				<label for="carrera" class="form-label">Carrera</label> <input
-					type="text" class="form-control" id="carrera"
-					data-th-field="*{carrera}">
+				<label for="docente" class="form-label">Docente</label>
+				<select id="docente" data-th-field="*{docente.legajo}" class ="form-select" required>
+					<option value ="">Seleccionar Docente</option>
+					<option data-th-value ="${d.legajo}" data-th-text="${d.apellido}" data-th-each="d:${listadoDocentes}"></option>
+				</select>
+			</div>
+			
+			<!-- select para vincular listado Carrera con las opcion del select -->
+			<div class="col-md-4">
+				<label for="carrera" class="form-label">Carrera</label>
+				<select id="carrera" data-th-field="*{carrera.codigo}" class ="form-select" required>
+					<option value ="">Seleccionar Carrera</option>
+					<option data-th-value ="${c.codigo}" data-th-text="${c.nombre}" data-th-each="c:${listadoCarreras}"></option>
+				</select>
 			</div>
 
 

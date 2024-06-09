@@ -2,6 +2,7 @@ package ar.edu.unju.fi.collections;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.model.Materia;
@@ -11,16 +12,7 @@ public class ListadoMaterias {
 	
 	
 	public static List<Materia> listadoMaterias(){
-		List<Materia> materiasVal=new ArrayList<Materia>();
-		for (int i = 0; i < materias.size(); i++) {
-			Materia materia = materias.get(i);
-			if (materia.getStatus() == true) {
-				materiasVal.add(materia);
-			}
-
-		}
-
-		return materiasVal;
+		return materias.stream().filter(c->c.getStatus()==true).collect(Collectors.toList());
 	}
 	
 	public static Materia buscarMateriaCod(String cod) {
