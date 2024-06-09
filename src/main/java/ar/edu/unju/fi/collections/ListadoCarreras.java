@@ -2,6 +2,7 @@ package ar.edu.unju.fi.collections;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import ar.edu.unju.fi.model.Carrera;
 
@@ -12,16 +13,7 @@ public class ListadoCarreras {
 	// Listar carreras
 	public static List<Carrera> listarCarreras() {
 
-		List<Carrera> carrerasVal = new ArrayList<Carrera>();
-		for (int i = 0; i < carreras.size(); i++) {
-			Carrera carrera = carreras.get(i);
-			if (carrera.getStatus() == true) {
-				carrerasVal.add(carrera);
-			}
-
-		}
-
-		return carrerasVal;
+		return carreras.stream().filter(c->c.getStatus()==true).collect(Collectors.toList());
 	}
 
 	// Metodo para buscar por ID
