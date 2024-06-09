@@ -16,7 +16,7 @@ public class CarreraController {
 	
 	@Autowired
 	Carrera nuevaCarrera = new Carrera();
-	
+
 	@GetMapping("/formularioCarrera")
 	public ModelAndView getFormCarrera() {
 		//Vista formCarrera.html
@@ -27,6 +27,15 @@ public class CarreraController {
 		return modelView;
 		
 	}
+	
+	@GetMapping("/listaDeCarreras")
+	public ModelAndView Lista() {
+		ModelAndView modelView= new ModelAndView("listaDeCarreras");
+		modelView.addObject("listadoCarreras",ListadoCarreras.listarCarreras());
+		return modelView;
+	}
+	
+	
 	@PostMapping("/guardarCarrera")
 	public ModelAndView saveCarrera(@ModelAttribute("nuevaCarrera") Carrera c) {
 
@@ -70,4 +79,7 @@ public class CarreraController {
 		return modelView;
 		
 	}
+	
+
+	
 }

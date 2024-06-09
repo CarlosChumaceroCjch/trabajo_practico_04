@@ -21,7 +21,14 @@ public class AlumnoController {
 		ModelAndView modelView = new ModelAndView("formAlumno");
 		
 		modelView.addObject("nuevoAlumno",nuevoAlumno);
-		
+		modelView.addObject("flag", false);
+		return modelView;
+	}
+	
+	@GetMapping("/listaDeAlumnos")
+	public ModelAndView Lista() {
+		ModelAndView modelView= new ModelAndView("listaDeAlumnos");
+		modelView.addObject("listadoAlumnos",ListadoAlumnos.listarAlumnos());
 		return modelView;
 	}
 	
@@ -38,8 +45,10 @@ public class AlumnoController {
 		
 	}
 	
+	
+	
 	@GetMapping("/eliminarAlumno/{lu}")
-	public ModelAndView eliminarAlumnoDeLista(@PathVariable(name="lu") Integer lu) {
+	public ModelAndView eliminarAlumnoDeLista(@PathVariable(name="lu") String lu) {
 		//Borrar
 		ListadoAlumnos.eliminarAlumno(lu);
 		
@@ -48,5 +57,23 @@ public class AlumnoController {
 		modelView.addObject("listadoAlumnos",ListadoAlumnos.listarAlumnos());
 		
 		return modelView;
+	}
+	
+	@GetMapping("/modificarAlumno/{lu}")
+	public ModelAndView modificarCarrera(@PathVariable(name="lu")String lu) {
+		Alumno alumno = ListadoAlumnos.buscarAlumnoLu(lu);
+		ModelAndView modelView =new ModelAndView("formAlumno");
+		modelView.addObject("nuevoAlumno",alumno);
+		modelView.addObject("flag", true);		
+		return modelView;
+	}
+	
+	@PostMapping("/modificarAlumno")
+	public ModelAndView modifcarAlumno(@ModelAttribute("nuevoAlumno") Alumno aMod)
+	{	ListadoAlumnos.modificarAlumno(aMod);
+		ModelAndView modelView = new ModelAndView("listaDeAlumnos");
+		modelView.addObject("listadoAlumnos",ListadoAlumnos.listarAlumnos());
+		return modelView;
+		
 	}
 }

@@ -19,19 +19,23 @@ public class DocenteController {
 	@GetMapping("/formularioDocente")
 	public ModelAndView getformDocente() {
 		ModelAndView modelView = new ModelAndView("formDocente");
-		
 		modelView.addObject("nuevoDocente",nuevoDocente);
-		
+		modelView.addObject("flag", false);
+		return modelView;
+	}
+	
+	@GetMapping("/listaDeDocentes")
+	public ModelAndView Lista() {
+		ModelAndView modelView= new ModelAndView("listaDeDocentes");
+		modelView.addObject("listadoDocentes",ListadoDocentes.listarDocentes());
 		return modelView;
 	}
 	
 	@PostMapping("/guardarDocente")
 	public ModelAndView saveADocente(@ModelAttribute("nuevoDocente") Docente d) {
 
-		//Guardado de carrera
 		ListadoDocentes.agDocente(d);
 		
-		//mostrar la vista (el Html)
 		ModelAndView modelView= new ModelAndView("listaDeDocentes");
 		modelView.addObject("listadoDocentes",ListadoDocentes.listarDocentes());
 		
@@ -40,7 +44,7 @@ public class DocenteController {
 	}
 	
 	@GetMapping("/eliminarDocente/{legajo}")
-	public ModelAndView eliminarDocenteDeLista(@PathVariable(name="legajo") Integer legajo) {
+	public ModelAndView eliminarDocenteDeLista(@PathVariable(name="legajo") String legajo) {
 		//Borrar
 		ListadoDocentes.eliminarDocente(legajo);
 		
@@ -49,5 +53,23 @@ public class DocenteController {
 		modelView.addObject("listadoDocentes",ListadoDocentes.listarDocentes());
 		
 		return modelView;
+	}
+	
+	@GetMapping("/modificarDocente/{legajo}")
+	public ModelAndView modificarDocente(@PathVariable(name="legajo")String legajo) {
+		Docente docente = ListadoDocentes.buscarDocenteLeg(legajo);
+		ModelAndView modelView =new ModelAndView("formDocente");
+		modelView.addObject("nuevoDocente",docente);
+		modelView.addObject("flag", true);		
+		return modelView;
+	}
+	
+	@PostMapping("/modificarDocente")
+	public ModelAndView modifcarDocente(@ModelAttribute("nuevoDocente") Docente dMod)
+	{	ListadoDocentes.modificarDocente(dMod);
+		ModelAndView modelView = new ModelAndView("listaDeDocentes");
+		modelView.addObject("listadoDocentes",ListadoDocentes.listarDocentes());
+		return modelView;
+		
 	}
 }

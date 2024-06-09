@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Alumno {
+	private String lu;
 	private Integer dni;
 	private String nombre;
 	private String apellido;
@@ -13,15 +14,15 @@ public class Alumno {
 	private String tel;
 	private LocalDate fecNac;
 	private String domicilio;
-	private Integer lu;
 	private Boolean status;
 	
 	public Alumno() {
 		
 	}
 	
-	public Alumno(Integer dni, String nombre, String apellido, String email, String tel, LocalDate fecNac,
-			String domicilio, Integer lu) {
+	public Alumno(String lu,Integer dni, String nombre, String apellido, String email, String tel, LocalDate fecNac,
+			String domicilio) {
+		this.lu = lu;
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -29,11 +30,16 @@ public class Alumno {
 		this.tel = tel;
 		this.fecNac = fecNac;
 		this.domicilio = domicilio;
-		this.lu = lu;
+
 	}
 
 
-
+	public String getLu() {
+		return lu;
+	}
+	public void setLu(String lu) {
+		this.lu = lu;
+	}
 	public Integer getDni() {
 		return dni;
 	}
@@ -76,12 +82,7 @@ public class Alumno {
 	public void setDomicilio(String domicilio) {
 		this.domicilio = domicilio;
 	}
-	public Integer getLu() {
-		return lu;
-	}
-	public void setLu(Integer lu) {
-		this.lu = lu;
-	}
+
 	
 	public Boolean getStatus() {
 		return status;

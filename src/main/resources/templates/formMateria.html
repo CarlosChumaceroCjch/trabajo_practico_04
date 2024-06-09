@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang ="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,11 +13,11 @@
 	<div class="container">
 		<h1>Formulario Materia</h1>
 		<form data-th-object="${nuevaMateria}"
-			data-th-Action="@{/guardarMateria}" method="post">
+			data-th-Action="${flag}?@{/modficarMateria}:@{/guardarMateria}" method="post">
 			<div class="col-md-4">
 				<label for="cod" class="form-label">Codigo de Materia</label> <input
 					type="text" class="form-control" id="cod"
-					data-th-field="*{cod}">
+					data-th-field="*{cod}" data-th-readonly=${flag}>
 			</div>
 			
 			<div class="col-md-4">

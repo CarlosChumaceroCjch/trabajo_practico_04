@@ -2,6 +2,7 @@ package ar.edu.unju.fi.collections;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import ar.edu.unju.fi.model.Alumno;
 
@@ -10,23 +11,14 @@ public class ListadoAlumnos {
 	
 	//Listar carreras
 		public static List<Alumno> listarAlumnos(){
-			List<Alumno> alumnosVal = new ArrayList<Alumno>();
-			for (int i = 0; i < alumnos.size(); i++) {
-				Alumno alumno = alumnos.get(i);
-				if (alumno.getStatus() == true) {
-					alumnosVal.add(alumno);
-				}
-
-			}
-
-			return alumnosVal;
+			return alumnos.stream().filter(a->a.getStatus()==true).collect(Collectors.toList());
 		}
 		
 		//Metodo para buscar por ID
 		
-		public static Alumno buscarAlumnoLu(Integer lu) {
+		public static Alumno buscarAlumnoLu(String lu) {
 			for (Alumno a:alumnos) {
-				if(a.getLu()==lu) {
+				if(a.getLu().equals(lu)) {
 					return a;
 				}
 			}
@@ -43,6 +35,7 @@ public class ListadoAlumnos {
 		//Modificar Carrera
 		
 		public static void modificarAlumno(Alumno alMod ) {
+			alMod.setStatus(true);
 			for (int i=0;i<alumnos.size();i++) {
 				Alumno alumno =alumnos.get(i);
 				if (alumno.getLu()==alMod.getLu()) {
@@ -53,7 +46,7 @@ public class ListadoAlumnos {
 		}
 		
 		//Eliminar Carrera
-		public static void eliminarAlumno(Integer lu) {
+		public static void eliminarAlumno(String lu) {
 			for (int i = 0; i < alumnos.size(); i++) {
 				Alumno alumno = alumnos.get(i);
 				if (alumno.getLu().equals(lu)) {

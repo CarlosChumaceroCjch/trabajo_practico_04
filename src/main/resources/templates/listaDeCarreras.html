@@ -11,7 +11,21 @@
 	<!-- Header -->
 	<div data-th-replace="~{fragments/header :: navbar}"></div>
 	<div class="container">
-		<table class="table table-striped">
+		<div class="row">
+			<div class="card" style="width: 18rem;" data-th-each="carrera :${listadoCarreras}">
+			<div class="card-body">
+				<h5 class="card-title" data-th-text="${carrera.nombre}"></h5>
+				<p>Codigo:</p><p class="card-text" data-th-text="${carrera.codigo}"></p>
+				<p>Cantidad de Años:</p><p class="card-text" data-th-text="${carrera.cantAnios}"></p>
+				<p>Estado:</p><p class="card-text" data-th-text="${carrera.status}"></p>
+
+				<a data-th-href="@{'/eliminarCarrera/'+${carrera.codigo}}" class="btn btn-danger">Borrar</a> 
+				<a data-th-href="@{'/modificarCarrera/'+${carrera.codigo}}" class="btn btn-warning">Modificar</a>
+			</div>
+			</div>
+		</div>
+		
+		<!-- <table class="table table-striped">
 			<thead>
 			    <tr>
 			      <th scope="col">Codigo</th>
@@ -34,7 +48,7 @@
 			      </td>
 			    </tr>
 			</tbody>
-		</table>
+		</table> -->
 	</div>
 	<footer data-th-replace="~{fragments/footer :: footer}">
 		</footer> 	

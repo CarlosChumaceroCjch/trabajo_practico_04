@@ -25,6 +25,14 @@ public class MateriaController {
 		modelView.addObject("nuevaMateria",nuevaMateria);
 		modelView.addObject("listadoDocentes",ListadoDocentes.listarDocentes());
 		modelView.addObject("listadoCarreras", ListadoCarreras.listarCarreras());
+		modelView.addObject("flag", false);
+		return modelView;
+	}
+	
+	@GetMapping("/listaDeMaterias")
+	public ModelAndView Lista() {
+		ModelAndView modelView= new ModelAndView("listaDeMaterias");
+		modelView.addObject("listadoMaterias",ListadoMaterias.listadoMaterias());
 		return modelView;
 	}
 	
@@ -53,5 +61,23 @@ public class MateriaController {
 		modelView.addObject("listadoMaterias",ListadoMaterias.listadoMaterias());
 		
 		return modelView;
+	}
+	
+	@GetMapping("/modificarMateria/{cod}")
+	public ModelAndView modificarMateria(@PathVariable(name="cod")String codigo) {
+		Materia materia = ListadoMaterias.buscarMateriaCod(codigo);
+		ModelAndView modelView =new ModelAndView("formMateria");
+		modelView.addObject("nuevaCarrera",materia);
+		modelView.addObject("flag", true);		
+		return modelView;
+	}
+	
+	@PostMapping("/modificarMateria")
+	public ModelAndView modifcarMateria(@ModelAttribute("nuevaMateria") Materia mMod)
+	{	ListadoMaterias.modificarMateria(mMod);
+		ModelAndView modelView = new ModelAndView("listaDeMaterias");
+		modelView.addObject("listadoMaterias",ListadoMaterias.listadoMaterias());
+		return modelView;
+		
 	}
 }
